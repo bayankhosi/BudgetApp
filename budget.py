@@ -48,6 +48,14 @@ def rec_expense():
     if expense_catagory == 2:  # Home
         expense_type = int(input("""Which Type of Expense\n
             [1] - Rent/mortgage
+            [2] - Property taxes
+            [3] - Furnishings
+            [4] - Lawn/garden
+            [5] - Supplies
+            [6] - Maintenance
+            [7] - Improvements
+            [8] - Moving
+            [9] - Other
         """))
         rw = 69 + expense_type
 
