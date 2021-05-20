@@ -1,5 +1,7 @@
 import openpyxl as opx
+import pandas as pd
 import datetime
+import pprint
 
 budget = opx.load_workbook('budget.xlsx')
 records = budget.worksheets[0]
@@ -18,7 +20,6 @@ def rec_income():
     cur_value = records.cell(row=4 + income_type, column=1 + month).value
     new_value = value + cur_value
     records.cell(row=4 + income_type, column=1 + month).value = new_value
-
 
 def rec_expense():
     value = int(input("\nEnter Amount of Expense\n"))
@@ -102,14 +103,25 @@ def rec_expense():
         """))
         rw = 88 + expense_type
 
-
     cur_value = records.cell(row=rw, column=1 + month).value
     new_value = value + cur_value
     records.cell(row=rw, column=1 + month).value = new_value
 
 
 def data():
-    print("kak data")
+    pd.read_excel('budget.xlsx')
+    
+
+    total_income = records['N8'].value
+    total_spend = records['N105'].value
+    total_net = records['N106'].value
+
+    time_frame = int(input("""
+                [1] - Monthly Data
+                [2] - Annual Data
+                        """))
+    if time_frame == 2:
+        print("Total Income =", total_income) #, "\nTotal Spend =", total_spend, "\nTotal Net =", total_net)
 
 
 while loop == 2:
@@ -121,7 +133,10 @@ while loop == 2:
     elif choice == 2:
         rec_income()
     elif choice == 3:
-        data()
+        #data()
+        df=pd.read_excel('budget.xlsx')
+        df.head()
+        print(df.iloc[6,13])
 
     budget.save('budget.xlsx')
     loop = int(input("1. Exit  2. Restart\n"))
