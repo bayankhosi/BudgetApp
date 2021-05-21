@@ -21,6 +21,7 @@ def rec_income():
     new_value = value + cur_value
     records.cell(row=4 + income_type, column=1 + month).value = new_value
 
+
 def rec_expense():
     value = int(input("\nEnter Amount of Expense\n"))
 
@@ -33,6 +34,7 @@ def rec_expense():
             [6] - Subscriptions
             [7] - Personal
             [8] - Financial Obligation
+            [9] - Misc
         """))
 
     if expense_catagory == 1:  # Everyday Expenses
@@ -103,6 +105,13 @@ def rec_expense():
         """))
         rw = 88 + expense_type
 
+    if expense_catagory == 9:  # Misc
+
+        expense_type = int(input("""Which Type of Expense\n
+            [1] - Loan Outs
+        """))
+        rw = 96 + expense_type
+
     cur_value = records.cell(row=rw, column=1 + month).value
     new_value = value + cur_value
     records.cell(row=rw, column=1 + month).value = new_value
@@ -110,7 +119,6 @@ def rec_expense():
 
 def data():
     pd.read_excel('budget.xlsx')
-    
 
     total_income = records['N8'].value
     total_spend = records['N105'].value
@@ -121,7 +129,8 @@ def data():
                 [2] - Annual Data
                         """))
     if time_frame == 2:
-        print("Total Income =", total_income) #, "\nTotal Spend =", total_spend, "\nTotal Net =", total_net)
+        # , "\nTotal Spend =", total_spend, "\nTotal Net =", total_net)
+        print("Total Income =", total_income)
 
 
 while loop == 2:
@@ -133,10 +142,10 @@ while loop == 2:
     elif choice == 2:
         rec_income()
     elif choice == 3:
-        #data()
-        df=pd.read_excel('budget.xlsx')
+        # data()
+        df = pd.read_excel('budget.xlsx')
         df.head()
-        print(df.iloc[6,13])
+        print(df.iloc[6, 13])
 
     budget.save('budget.xlsx')
     loop = int(input("1. Exit  2. Restart\n"))
