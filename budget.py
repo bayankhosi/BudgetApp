@@ -1,9 +1,9 @@
 import openpyxl as opx
 import pandas as pd
 import datetime
-import pprint
+import upload
 
-budget = opx.load_workbook('budget.xlsx')
+budget = opx.load_workbook('/home/bayanda/Documents/BudgetApp/Files/budget.xlsx')
 records = budget.worksheets[0]
 month = int(datetime.datetime.now().strftime("%m"))  # month number
 
@@ -147,5 +147,7 @@ while loop == 2:
         df.head()
         print(df.iloc[6, 13])
 
-    budget.save('budget.xlsx')
+    budget.save('/home/bayanda/Documents/BudgetApp/Files/budget.xlsx')
     loop = int(input("1. Exit  2. Restart\n"))
+
+upload.main()
