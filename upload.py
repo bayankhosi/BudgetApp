@@ -82,7 +82,7 @@ class MyDrive():
 
 def main():
     # my_drive.list_files()
-    path = "/home/bayanda/Documents/BudgetApp/Files/"
+    path = "./Files/"
     files = os.listdir(path)
     my_drive = MyDrive()
 
