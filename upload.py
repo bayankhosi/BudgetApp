@@ -29,10 +29,10 @@ class MyDrive():
                 creds.refresh(Request())
             else:
                 flow = InstalledAppFlow.from_client_secrets_file(
-                    '/home/bayanda/Documents/BudgetApp/credentials.json', SCOPES)
+                    './credentials.json', SCOPES)
                 creds = flow.run_local_server(port=0)
             # Save the credentials for the next run
-            with open('/home/bayanda/Documents/BudgetApp/token.json', 'w') as token:
+            with open('./token.json', 'w') as token:
                 token.write(creds.to_json())
 
         self.service = build('drive', 'v3', credentials=creds)
