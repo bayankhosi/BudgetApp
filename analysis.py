@@ -19,7 +19,7 @@ class month:
         income_list = []
         income_type_list = []
 
-        for row in records.iter_rows(min_row=5, max_row=7):
+        for row in records.iter_rows(min_row=5, max_row=7):     # income
 
             cash = row[ro].value        # the cash
             income_list.append(cash)
@@ -28,9 +28,24 @@ class month:
             income_type_list.append(income_type)
 
         income_dict = {'Amount': income_list}
-
+        
         income_dataframe = pd.DataFrame(income_dict, index=income_type_list)
+
         print(income_dataframe)
+
+        home_list = []
+        home_type_list = []
+
+        for row in records.iter_rows(min_row=12, max_row=16):     # home expenses
+            cash = row[ro].value        # the cash
+            home_list.append(cash)
+
+            home_type = row[0].value
+            home_type_list.append(home_type)
+
+        home_dict = {'Amount': home_list}
+        home_dataframe = pd.DataFrame(home_dict, index= home_type_list)
+        print(home_dataframe)
 
 
 #month.monthly_total()
