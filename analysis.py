@@ -174,4 +174,4 @@ class month:
 
         print('\n', exp, '\n')
 
-month.monthly_total()
+# month.monthly_total()
