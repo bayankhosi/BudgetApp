@@ -149,6 +149,7 @@ class month:
 
         print('\n', exp, '\n')
 
+
     def monthly_category():
         ro = 1 + int(input("""
             Enter Number of Month you wanna view
@@ -368,7 +369,10 @@ class month:
         elif choice == 11:   # Misc
             print(misc_dataframe.tr)
 
-    def yearly():           # whole year
+
+class year():           # whole year
+    def total():
         print("not yet available")
 
-month.monthly_category()
+# month.monthly_category()
+# month.monthly_total()

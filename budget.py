@@ -15,12 +15,11 @@ def rec_income():
     income_type = int(input("""Which Type of Income\n
             [1] - Wages
             [2] - Interest/Dividends
-            [3] - Misc
         """))
-    cur_value = records.cell(row=4 + income_type, column=1 + month).value
+    cur_value = records.cell(row=1
+     + month, column=1 + income_type).value
     new_value = value + cur_value
-    records.cell(row=4 + income_type, column=1 + month).value = new_value
-
+    records.cell(row=1 + month, column=1 + income_type).value = new_value
 
 def rec_expense():
     value = int(input("\nEnter Amount of Expense\n"))
@@ -40,53 +39,50 @@ def rec_expense():
     if expense_catagory == 1:  # Everyday Expenses
         expense_type = int(input("""Which Type of Expense\n
             [1] - Groceries
-            [2] - Restaurants
         """))
-        rw = 19 + expense_type
+        col = 3 + expense_type
 
     if expense_catagory == 2:  # Home
         expense_type = int(input("""Which Type of Expense\n
             [1] - Rent/Mortgage
             [2] - Insurance
             [3] - Repairs/Improvements
-            [4] - Services
-            [5] - Utilities
+            [4] - Utilities
         """))
-        rw = 11 + expense_type
+        col = 4 + expense_type
 
     if expense_catagory == 3:  # Transport
         expense_type = int(input("""Which Type of Expense\n
             [1] - Public Transit
+            [2] - Fuel
+            [3] - Car Repairs
+            [4] - Parking
 
         """))
-        rw = 28 + expense_type
+        col = 7 + expense_type
 
     if expense_catagory == 4:  # Vacation
         expense_type = int(input("""Which Type of Expense\n
-            [1] - Plane fare
+            [1] - Transport
             [2] - Accommodation
             [3] - Food
-            [4] - Souvenirs
-            [5] - Pet Boarding
-            [6] - Transport
         """))
-        rw = 54 + expense_type
+        col = 16 + expense_type
 
     if expense_catagory == 5:  # Recreation
         expense_type = int(input("""Which Type of Expense\n
-            [1] - Car
-            [2] - Sax
-            [3] - Misc
+            [1] - Hobbies
+            [2] - Books/Games
+            [3] - Movies/Concerts
         """))
-        rw = 63 + expense_type
+        col = 11 + expense_type
 
     if expense_catagory == 6:  # Subscriptions
         expense_type = int(input("""Which Type of Expense\n
             [1] - Phone
             [2] - Internet
-            [3] - Online Services
         """))
-        rw = 70 + expense_type
+        col = 19 + expense_type
 
     if expense_catagory == 7:  # Personal
         expense_type = int(input("""Which Type of Expense\n
@@ -94,27 +90,27 @@ def rec_expense():
             [2] - Barber
             [3] - Toiletry
             [4] - Gifts
-            [5] - Charity
         """))
-        rw = 80 + expense_type
+        col = 21 + expense_type
 
     if expense_catagory == 8:  # FINANCIAL OBLIGATIONS
 
         expense_type = int(input("""Which Type of Expense\n
             [1] - Long-term savings
+            [2] - tax
         """))
-        rw = 88 + expense_type
+        col = 25 + expense_type
 
     if expense_catagory == 9:  # Misc
 
         expense_type = int(input("""Which Type of Expense\n
             [1] - Loan Outs
         """))
-        rw = 96 + expense_type
+        col = 27 + expense_type
 
-    cur_value = records.cell(row=rw, column=1 + month).value
+    cur_value = records.cell(row=1 + month, column=col).value
     new_value = value + cur_value
-    records.cell(row=rw, column=1 + month).value = new_value
+    records.cell(row=1 + month, column=col).value = new_value
 
 
 while loop == 2:
@@ -140,4 +136,4 @@ while loop == 2:
     budget.save('./Files/budget.xlsx')
     loop = int(input("1. Exit  2. Restart\n"))
 
-upload.main()
+#upload.main()
