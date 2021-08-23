@@ -91,7 +91,7 @@ def rec_expense():
             [3] - Toiletry
             [4] - Gifts
         """))
-        col = 21 + expense_type
+        col = 22 + expense_type
 
     if expense_catagory == 8:  # FINANCIAL OBLIGATIONS
 
@@ -128,10 +128,10 @@ while loop == 2:
                             """))
         if choice ==1:
             choice = int(input("""
-                                [1] - Total
+                                [1] - Monthly Overview
                                 [2] - Catagory
                                 """))
-            analysis.month.monthly_total()
+            analysis.monthly.summary()
 
     budget.save('./Files/budget.xlsx')
     loop = int(input("1. Exit  2. Restart\n"))
