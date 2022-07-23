@@ -1,10 +1,12 @@
 import datetime
 import pandas as pd
+import os
 
-df = pd.read_excel(
-    './Files/budget.xlsx',
-    sheet_name='Sheet1',
-    index_col=0)
+dirname = os.path.dirname(__file__)
+budget = os.path.join(dirname, 'Files/budget.xlsx')
+
+df = pd.read_excel(budget, sheet_name='Sheet2', index_col=0)
+
 
 class monthly():
 
@@ -24,9 +26,10 @@ class monthly():
             9: "SEP",
             10: "OCT",
             11: "NOV",
-            12: "DEC"}
+            12: "DEC"
+        }
 
-        print('\n',switcher.get(month, "Invalid month"), '\n')
+        print('\n', switcher.get(month, "Invalid month"), '\n')
         mnt_name = switcher.get(month)
 
         print(df.loc[mnt_name])

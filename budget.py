@@ -1,14 +1,14 @@
+#!/usr/bin/env python3
 import openpyxl as opx
 import datetime
 import upload
 import analysis
 
-budget = opx.load_workbook('./Files/budget.xlsx')
+budget = opx.load_workbook(analysis.budget)
 records = budget.worksheets[0]
 month = int(datetime.datetime.now().strftime("%m"))  # month number
 
 loop = 2
-
 
 def rec_income():
     value = int(input("\nEnter Amount of Income\n"))
@@ -59,7 +59,7 @@ def rec_expense():
             [4] - Parking
 
         """))
-        col = 7 + expense_type
+        col = 8 + expense_type
 
     if expense_catagory == 4:  # Vacation
         expense_type = int(input("""Which Type of Expense\n
@@ -67,7 +67,7 @@ def rec_expense():
             [2] - Accommodation
             [3] - Food
         """))
-        col = 16 + expense_type
+        col = 17 + expense_type
 
     if expense_catagory == 5:  # Recreation
         expense_type = int(input("""Which Type of Expense\n
@@ -75,14 +75,14 @@ def rec_expense():
             [2] - Books/Games
             [3] - Movies/Concerts
         """))
-        col = 11 + expense_type
+        col = 12 + expense_type
 
     if expense_catagory == 6:  # Subscriptions
         expense_type = int(input("""Which Type of Expense\n
             [1] - Phone
             [2] - Internet
         """))
-        col = 19 + expense_type
+        col = 21 + expense_type
 
     if expense_catagory == 7:  # Personal
         expense_type = int(input("""Which Type of Expense\n
@@ -91,7 +91,7 @@ def rec_expense():
             [3] - Toiletry
             [4] - Gifts
         """))
-        col = 22 + expense_type
+        col = 23 + expense_type
 
     if expense_catagory == 8:  # FINANCIAL OBLIGATIONS
 
@@ -99,14 +99,14 @@ def rec_expense():
             [1] - Long-term savings
             [2] - tax
         """))
-        col = 25 + expense_type
+        col = 26 + expense_type
 
     if expense_catagory == 9:  # Misc
 
         expense_type = int(input("""Which Type of Expense\n
             [1] - Loan Outs
         """))
-        col = 27 + expense_type
+        col = 28 + expense_type
 
     cur_value = records.cell(row=1 + month, column=col).value
     new_value = value + cur_value
@@ -114,26 +114,29 @@ def rec_expense():
 
 
 while loop == 2:
-    print("\n**************************************************************************************************\n")
+    print("\n********************************************************************************\n")
     choice = int(
-        input("Choose Operation:\n1. Record Expense  2. Record Income  3. View Data\n"))
+        input("Choose Operation:\n 1. Record Expense\n 2. Record Income\n 3. View Data\n"))
     if choice == 1:
+        print("\n********************************************************************************\n")
         rec_expense()
     elif choice == 2:
+        print("\n********************************************************************************\n")
         rec_income()
     elif choice == 3:
+        print("\n********************************************************************************\n")
         choice = int(input("""
-                            [1] - Monthly
-                            [2] - Yearly
-                            """))
+            [1] - Monthly
+            [2] - Yearly
+        """))
         if choice ==1:
             choice = int(input("""
-                                [1] - Monthly Overview
-                                [2] - Catagory
-                                """))
+            [1] - Monthly Overview
+            [2] - Catagory
+            """))
             analysis.monthly.summary()
 
-    budget.save('./Files/budget.xlsx')
+    budget.save(analysis.budget)
     loop = int(input("1. Exit  2. Restart\n"))
 
 #upload.main()
