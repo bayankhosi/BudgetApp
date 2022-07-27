@@ -5,7 +5,7 @@ import os
 dirname = os.path.dirname(__file__)
 budget = os.path.join(dirname, 'Files/budget.xlsx')
 
-df = pd.read_excel(budget, sheet_name='Sheet2', index_col=0)
+""" df = pd.read_excel(budget, sheet_name='Sheet2', index_col=0)
 
 
 class monthly():
@@ -33,6 +33,6 @@ class monthly():
         mnt_name = switcher.get(month)
 
         print(df.loc[mnt_name])
-
+ """
 
 # monthly.summary()
